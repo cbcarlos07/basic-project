@@ -26,7 +26,7 @@ spec:
         env:
           - name: SERVER_PORT
             valueFrom:
-              configMapRef:
+              configMapKeyRef:
                 name: env
                 key: SERVER_PORT
 ---
