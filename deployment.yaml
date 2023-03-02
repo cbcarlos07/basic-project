@@ -23,12 +23,10 @@ spec:
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
         - containerPort: 80
-        env:
-          - name: SERVER_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: special-config
-                key: SERVER_PORT
+        command: [ "/bin/sh", "-c", "env" ] 
+       envFrom:
+      - configMapRef:
+          name: env
 ---
 kind: Service
 apiVersion: v1
