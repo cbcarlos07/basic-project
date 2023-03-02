@@ -8,7 +8,6 @@ stages:
         ln -s `pwd` /node/src/github.com/rancher/pipeline-example-node
         cd /node/src/github.com/rancher/pipeline-example-node
         npm i
-        npm start
 - name: Publish
   steps:
   - publishImageConfig:
