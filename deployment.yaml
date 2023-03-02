@@ -25,7 +25,7 @@ spec:
         - containerPort: 3000
           targetPort: 80
        envFrom:
-      - configMapRef:
+       - configMapRef:
           name: special-config 
 ---
 kind: Service
