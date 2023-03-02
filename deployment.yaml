@@ -27,7 +27,7 @@ spec:
           - name: SERVER_PORT
             valueFrom:
               configMapKeyRef:
-                name: env
+                name: special-config
                 key: SERVER_PORT
 ---
 kind: Service
