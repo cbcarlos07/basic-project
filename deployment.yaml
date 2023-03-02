@@ -26,10 +26,7 @@ spec:
         command: [ "/bin/sh", "-c", "env" ] 
         env:
           - name: SERVER_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: special-config
-                key: SERVER_PORT
+            value: 3000
 ---
 kind: Service
 apiVersion: v1
