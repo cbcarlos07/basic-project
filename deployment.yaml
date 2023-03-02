@@ -23,10 +23,9 @@ spec:
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
         - containerPort: 80
-        command: [ "/bin/sh", "-c", "env" ] 
         env:
           - name: SERVER_PORT
-            value: 3000
+            value: "3000"
 ---
 kind: Service
 apiVersion: v1
