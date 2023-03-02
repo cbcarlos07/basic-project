@@ -20,12 +20,10 @@ spec:
       - name: pipeline-docker-registry
       containers:
       - name: nodeapi
+        imagePullPolicy: Always
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
         - containerPort: 3000
-        envFrom:
-        - configMapRef:
-            name: env
 ---
 kind: Service
 apiVersion: v1
@@ -39,6 +37,7 @@ spec:
   ports:
     - protocol: TCP
       port: 3000
+      nodePort: 30253
       targetPort: 80
 
 
