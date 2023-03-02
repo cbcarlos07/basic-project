@@ -22,7 +22,7 @@ spec:
       - name: nodeapi
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
-        - containerPort: 80
+        - containerPort: 3000
         env:
         - name: SERVER_PORT
           value: "3000"
