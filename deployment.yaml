@@ -26,7 +26,7 @@ spec:
         command: [ "/bin/sh", "-c", "env" ] 
         envFrom:
         - configMapRef:
-            name: env
+            name: special-config
 ---
 kind: Service
 apiVersion: v1
