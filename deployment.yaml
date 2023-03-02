@@ -1,0 +1,59 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-server
+  #namespace: go
+  labels:
+    app: nodeapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodeapi
+  template:
+    metadata:
+      labels:
+        app: nodeapi
+    spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
+      containers:
+      - name: nodeapi
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        ports:
+        - containerPort: 80
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: node-service
+  #namespace: go
+spec:
+  selector:
+    app: nodeapi
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  #namespace: go
+  name: node-ingress
+  annotations:
+    allow.http: "false"
+spec:
+  rules:
+  - host: node.rancher.britosoftware.com.br
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: node-service
+            servicePort: 80
