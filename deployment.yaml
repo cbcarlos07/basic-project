@@ -23,9 +23,12 @@ spec:
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
         - containerPort: 80
-        envFrom:
-        - configMapRef:
-            name: env
+        env:
+          - name: SERVER_PORT
+            valueFrom:
+              configMapRef:
+                name: env
+                key: SERVER_PORT
 ---
 kind: Service
 apiVersion: v1
