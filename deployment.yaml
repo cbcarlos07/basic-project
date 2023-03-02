@@ -49,7 +49,7 @@ metadata:
   #namespace: go
   name: node-ingress
   annotations:
-    allow.http: "false"
+    allow.http: "true"
 spec:
   rules:
   - host: node.rancher.britosoftware.com.br
