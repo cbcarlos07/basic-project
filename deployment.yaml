@@ -24,9 +24,12 @@ spec:
         ports:
         - containerPort: 80
         command: [ "/bin/sh", "-c", "env" ] 
-        envFrom:
-        - configMapRef:
-            name: special-config
+        env:
+          - name: SERVER_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: special-config
+                key: SERVER_PORT
 ---
 kind: Service
 apiVersion: v1
