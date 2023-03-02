@@ -23,8 +23,8 @@ spec:
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
         - containerPort: 3000
-       envFrom:
-       - configMapRef:
+        envFrom:
+        - configMapRef:
           name: special-config 
 ---
 kind: Service
